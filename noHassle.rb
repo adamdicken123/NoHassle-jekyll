@@ -81,10 +81,10 @@ module Jekyll
 
           md_content = File.read(md_file)
 
-
           # Copy resources if required
           nbconvert_resources = "#{dir}/#{name}#{@@nbconvert_append}"
-          if !Dir["#{dir}/#{name}#{@@nbconvert_append}/*"].nil?
+          nbconvert_resources_files = Dir["#{nbconvert_resources}/*"]
+          if !nbconvert_resources_files.nil? and !nbconvert_resources_files.empty?
             jekyll_resources_folder = "#{@@resources_folder}/#{name}#{@@nbconvert_append}"
 
             logger.info "Copying generated resources from \"#{nbconvert_resources}\" to \"#{jekyll_resources_folder}\""
